@@ -1,0 +1,2 @@
+This was done when using lazy.nvim
+To install stuff, do it in lua/plugins/<name>.lua
