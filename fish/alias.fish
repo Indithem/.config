@@ -3,7 +3,7 @@ alias ghc="~/.ghcup/ghc/9.4.8/ghc"
 
 # get colorful output
 alias less  "less -R"
-# alias watch  "watch --color"
+alias watch  "watch --color"
 # alias less bat
 # alias cat bat
 alias move_last_download_to 'mv -v (find ~/Downloads/ -type f -cmin -60 | /bin/eza --color=never -rscreated --only-files --absolute --stdin)'
@@ -20,11 +20,14 @@ alias j="just"
 #    cd $argv[1]
 #end
 alias cdmkdir 'mkdir -p $argv[1];cd '
-function script_sysmountstart -d 'systemctl --user start mount@$(systemd-escape -- $argv[1])'
+function script_sysmount_start -d 'systemctl --user start mount@$(systemd-escape -- $argv[1])'
     systemctl --user start mount@$(systemd-escape -- $argv[1])
 end
-function script_sysmountstatus -d 'systemctl --user status mount@$(systemd-escape -- $argv[1])'
+function script_sysmount_status -d 'systemctl --user status mount@$(systemd-escape -- $argv[1])'
     systemctl --user status mount@$(systemd-escape -- $argv[1])
+end
+function script_sysmount_stop -d 'systemctl --user stop mount@$(systemd-escape -- $argv[1])'
+    systemctl --user stop mount@$(systemd-escape -- $argv[1])
 end
 
 #alias zigup "zigup --install-dir /home/sreenu/zig/compilers"

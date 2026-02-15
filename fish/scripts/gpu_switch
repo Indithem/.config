@@ -1,0 +1,34 @@
+#!/usr/bin/env fish
+
+argparse 'r/reboot' -- $argv; or return
+
+set current_mode $(supergfxctl -g)
+echo Currently in $current_mode
+
+function read_confirm
+  while true
+    read -l -P 'Switch? [y/N] ' confirm
+
+    switch $confirm
+      case Y y
+        return 0
+      case '' N n
+        return 1
+    end
+  end
+end
+
+if read_confirm
+	if test $current_mode = "AsusMuxDgpu"
+		supergfxctl -m Hybrid
+		echo "Changed mode to Hybrid"
+	else
+		supergfxctl -m AsusMuxDgpu
+		echo "Changed mode to GPU"
+	end
+
+	if set --query --function _flag_r
+		reboot
+	end
+end
+

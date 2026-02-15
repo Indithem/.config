@@ -67,8 +67,9 @@ input {
 
     // Focus windows and outputs automatically when moving the mouse into them.
     // Setting max-scroll-amount="0%" makes it work only on windows already fully on screen.
-    focus-follows-mouse max-scroll-amount="100%"
-    //focus-follows-mouse max-scroll-amount="25%"
+    //focus-follows-mouse max-scroll-amount="100%"
+    focus-follows-mouse max-scroll-amount="25%"
+    //focus-follows-mouse max-scroll-amount="0%"
 
     workspace-auto-back-and-forth
 }
@@ -178,7 +179,8 @@ layout {
         // - CSS-like notation: "rgb(255, 127, 0)", rgba(), hsl() and a few others.
 
         // Color of the ring on the active monitor.
-        active-color "#7fc8ff"
+        //active-color "#7fc8ff"
+        active-color "#e282ed"
 
         // Color of the ring on inactive monitors.
         //
@@ -271,6 +273,9 @@ layout {
         // top 64
         // bottom 64
     }
+
+// Set transparent workspace background color.
+    background-color "transparent"
 }
 
 // Add lines like this to spawn processes at startup.
@@ -368,6 +373,13 @@ layer-rule {
   match namespace="^noctalia-overview*"
   place-within-backdrop true
 }
+
+overview {
+    workspace-shadow {
+        off
+    }
+}
+
 
 binds {
     // Keys consist of modifiers separated by + signs, followed by an XKB key name
@@ -643,3 +655,8 @@ binds {
     // moving the mouse or pressing any other key.
     Mod+Shift+P { power-off-monitors; }
 }
+
+
+
+include "./noctalia.kdl"
+
